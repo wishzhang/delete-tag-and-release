@@ -7825,7 +7825,7 @@ async function deleteReleases(octokit, qualifiedRepo, tagName) {
       repo: qualifiedRepo.repo,
       owner: qualifiedRepo.owner
     });
-    releaseIds = (releases.data ?? []).filter(({ tag_name, draft }) => tag_name === tagName && !draft).map(({ id }) => id);
+    releaseIds = (releases.data ?? []).filter(({ tag_name }) => tag_name === tagName).map(({ id }) => id);
   } catch (error2) {
     if (error2 instanceof Error) {
       log("\u{1F6D1}", `failed to get list of releases <- ${error2.message}`, "error");
